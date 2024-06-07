@@ -39,7 +39,7 @@ in Main.app inserisco un ul con i dati che otterò dalla chiamata axios ogni vol
 
 Inserisco la bandiera nella lista tramite v-show.
 
-creo nel metodo searchFilm un'altra chiamata per le serie tv e aggiungo il risultato nella pagina.
+Creo nel metodo searchFilm un'altra chiamata per le serie tv e aggiungo il risultato nella pagina.
 
 
 

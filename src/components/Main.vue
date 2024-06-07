@@ -7,6 +7,24 @@ import { store } from '../store';
                 store,
             }
         },
+        methods:{
+            flag(language){
+                let src;
+                if(language=='en')
+                    src='../assets/img/en.jpg';
+                else if(language=='it')
+                    src='../assets/img/it.svg';
+                else if(language=='ko')
+                    src='../assets/img/kr.svg';
+                else if(language=='ja')
+                    src='../assets/img/jp.svg';
+                else if(language=='fr')
+                    src='../assets/img/fr.svg';
+                else if(language=='de')
+                    src='../assets/img/de.svg';
+                return new URL(src,import.meta.url).href
+            },
+        }
         };
 </script>
 
@@ -17,12 +35,8 @@ import { store } from '../store';
         <ul>
             <li>Titolo: {{ film.title }}</li>
             <li>Titolo originale: {{ film.original_title }}</li>
-            <li v-show="film.original_language=='en'"><img src="../assets/img/en.jpg"></li>
-            <li v-show="film.original_language=='ja'"><img src="../assets/img/jp.svg"></li>
-            <li v-show="film.original_language=='ko'"><img src="../assets/img/kr.svg"></li>
-            <li v-show="film.original_language=='de'"><img src="../assets/img/de.svg"></li>
-            <li v-show="film.original_language=='it'"><img src="../assets/img/it.svg"></li>
-            <li v-show="film.original_language=='fr'"><img src="../assets/img/fr.svg"></li>
+            <li><img :src="'https://image.tmdb.org/t/p/w342'+film.poster_path"></li>
+            <li><img :src="flag(film.original_language)" class="flag"></li>
             <li>Voto: {{ film.vote_average }}</li>
             <li></li>
         </ul>
@@ -33,12 +47,8 @@ import { store } from '../store';
         <ul>
             <li>Titolo: {{ film.name }}</li>
             <li>Titolo originale: {{ film.original_name }}</li>
-            <li v-show="film.original_language=='en'"><img src="../assets/img/en.jpg"></li>
-            <li v-show="film.original_language=='ja'"><img src="../assets/img/jp.svg"></li>
-            <li v-show="film.original_language=='ko'"><img src="../assets/img/kr.svg"></li>
-            <li v-show="film.original_language=='de'"><img src="../assets/img/de.svg"></li>
-            <li v-show="film.original_language=='it'"><img src="../assets/img/it.svg"></li>
-            <li v-show="film.original_language=='fr'"><img src="../assets/img/fr.svg"></li>
+            <li><img :src="flag(film.original_language)" class="flag"></li>
+            <li><img :src="flag()" class="flag"></li>
             <li>Voto: {{ film.vote_average }}</li>
             <li></li>
         </ul>
@@ -47,7 +57,7 @@ import { store } from '../store';
 </template>
 
 <style scoped lang="scss"> 
-img{
+.flag{
     width: 40px;
     border: 1px solid black;
 }
