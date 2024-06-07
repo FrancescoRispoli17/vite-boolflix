@@ -35,7 +35,7 @@ In Main.vue inserisco un tag input con all'interno il v-model collegato alla chi
 //App.vue PADRE
     <Main @ricerca="searchFilm"/>
 ```
-in Main.app inserisco un ul con i dai che otterò dalla chiamata axios ogni volta che scrivo qualcosa nell'input.
+in Main.app inserisco un ul con i dati che otterò dalla chiamata axios ogni volta che scrivo qualcosa nell'input.
 
 
 
