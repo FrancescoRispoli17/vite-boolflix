@@ -19,10 +19,18 @@ import axios from 'axios';
           axios.get(this.store.apiInfo.url,{
             params:{
               query:this.store.apiInfo.titleInput,
-              language:this.store.apiInfo.endpoints.language,
+              language:'it',
             }
           })
           .then((response)=> this.store.results=response.data.results )
+
+          axios.get(this.store.apiInfo.urlTV,{
+            params:{
+              query:this.store.apiInfo.titleInput,
+              language:'it',
+            }
+          })
+          .then((response)=> this.store.resultstv=response.data.results )
         },
       },
   };

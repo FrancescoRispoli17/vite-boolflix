@@ -37,7 +37,9 @@ In Main.vue inserisco un tag input con all'interno il v-model collegato alla chi
 ```
 in Main.app inserisco un ul con i dati che otterò dalla chiamata axios ogni volta che scrivo qualcosa nell'input.
 
-Inserisco la bandiera nella lista 
+Inserisco la bandiera nella lista tramite v-show.
+
+creo nel metodo searchFilm un'altra chiamata per le serie tv e aggiungo il risultato nella pagina.
 
 
 
