@@ -24,6 +24,10 @@ import { store } from '../store';
                     src='../assets/img/de.svg';
                 return new URL(src,import.meta.url).href
             },
+            stelle(vote){
+                vote=vote/2;
+                return parseInt(vote.toFixed());
+            }
         }
         };
 </script>
@@ -37,7 +41,7 @@ import { store } from '../store';
             <li>Titolo originale: {{ film.original_title }}</li>
             <li><img :src="'https://image.tmdb.org/t/p/w342'+film.poster_path"></li>
             <li><img :src="flag(film.original_language)" class="flag"></li>
-            <li>Voto: {{ film.vote_average }}</li>
+            <li><font-awesome-icon icon="fa-solid fa-star" v-for="n in stelle(film.vote_average)" /></li>
             <li></li>
         </ul>
     </li>
@@ -47,9 +51,9 @@ import { store } from '../store';
         <ul>
             <li>Titolo: {{ film.name }}</li>
             <li>Titolo originale: {{ film.original_name }}</li>
+            <li><img :src="'https://image.tmdb.org/t/p/w342'+film.poster_path"></li>
             <li><img :src="flag(film.original_language)" class="flag"></li>
-            <li><img :src="flag()" class="flag"></li>
-            <li>Voto: {{ film.vote_average }}</li>
+            <li>{{ film.vote_average }}</li>
             <li></li>
         </ul>
     </li>
