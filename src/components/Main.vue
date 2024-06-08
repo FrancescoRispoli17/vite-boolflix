@@ -1,13 +1,34 @@
 <script>
 import { store } from '../store';
+import axios from 'axios';
     export default{
         name:'Main',
         data(){
             return{
                 store,
+                results:[],
             }
         },
         methods:{
+            searchFilm(){
+                axios.get(this.store.apiInfo.url + 'movie',{
+                    params:{
+                        api_key:this.store.apiInfo.apiKey,
+                        query:this.store.apiInfo.titleInput,
+                        language:'it',
+                    }
+                })
+                .then((response)=> this.store.results=response.data.results )
+
+                axios.get(this.store.apiInfo.url + 'tv',{
+                    params:{
+                        api_key:this.store.apiInfo.apiKey,
+                        query:this.store.apiInfo.titleInput,
+                        language:'it',
+                    }
+                })
+                .then((response)=> this.store.resultstv=response.data.results )
+            },
             flag(language){
                 let src;
                 if(language=='en')
@@ -33,7 +54,7 @@ import { store } from '../store';
 </script>
 
 <template>
-<input type="text" placeholder="inserisci titolo film" @input="$emit('ricerca')" v-model="store.apiInfo.titleInput">
+<input type="text" placeholder="inserisci titolo film" @input="searchFilm" v-model="store.apiInfo.titleInput">
 <ul v-show="store.apiInfo.titleInput">
     <li v-for="film in store.results">
         <ul>
